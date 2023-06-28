@@ -20,5 +20,5 @@ This test should be completed within three hours from the date you begin the ass
 
 
 ## Preparation
-1. Prefer Node version: > 18.13.0
+1. Node version preferred: > 18.13.0
 2. OS: Win 10, 11
