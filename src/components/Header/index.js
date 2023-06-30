@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // reactstrap components
 import { Row, Col } from 'reactstrap';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 import './index.scss';
@@ -17,12 +17,15 @@ function HomePage() {
   }, []);
 
   const connectWallet = async () => {
-    try {
-      // Request access to the user's Metamask wallet
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-      setIsConnected(true);
-    } catch (error) {
-      console.error('Failed to connect to wallet:', error);
+    if (!isConnected) {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        if (accounts && accounts[0]) {
+          setIsConnected(true)
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
